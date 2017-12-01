@@ -57,5 +57,10 @@ namespace AppAddingInformationToDB
 
             dataGridRoute.DataSource = m_dbContext.Routes.ToList();
         }
+
+        private void gMapControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
