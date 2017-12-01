@@ -12,6 +12,8 @@ namespace AppAddingInformationToDB
 {
     public partial class Form1 : Form
     {
+        private MyModel m_dbContext;
+
         public Form1()
         {
             InitializeComponent();
@@ -19,37 +21,41 @@ namespace AppAddingInformationToDB
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var model = new MyModel();
-           
-            dataGridBrand.DataSource = model.Brands.ToList();
+            m_dbContext = new MyModel();
+            DisplayTableInForm();
+        }
+
+        private void DisplayTableInForm()
+        {
+            dataGridBrand.DataSource = m_dbContext.Brands.ToList();
             dataGridBrand.Columns[2].Visible = false;
 
-            dataGridDimension.DataSource = model.Dimensions.ToList();
+            dataGridDimension.DataSource = m_dbContext.Dimensions.ToList();
             dataGridDimension.Columns[4].Visible = false;
 
-            dataGridDriver.DataSource = model.Drivers.ToList();
+            dataGridDriver.DataSource = m_dbContext.Drivers.ToList();
             dataGridDriver.Columns[5].Visible = false;
             dataGridDriver.Columns[6].Visible = false;
             dataGridDriver.Columns[7].Visible = false;
 
-            dataGridTransport.DataSource = model.Transports.ToList();
+            dataGridTransport.DataSource = m_dbContext.Transports.ToList();
             dataGridTransport.Columns[6].Visible = false;
             dataGridTransport.Columns[7].Visible = false;
             dataGridTransport.Columns[8].Visible = false;
             dataGridTransport.Columns[9].Visible = false;
             dataGridTransport.Columns[10].Visible = false;
-            
 
-            dataGridWeight.DataSource = model.Weights.ToList();
+
+            dataGridWeight.DataSource = m_dbContext.Weights.ToList();
             dataGridWeight.Columns[2].Visible = false;
 
-            dataGridType.DataSource = model.Types.ToList();
+            dataGridType.DataSource = m_dbContext.Types.ToList();
             dataGridType.Columns[2].Visible = false;
 
-            dataGridExperience.DataSource = model.Experiences.ToList();
+            dataGridExperience.DataSource = m_dbContext.Experiences.ToList();
             dataGridExperience.Columns[2].Visible = false;
 
-            dataGridRoute.DataSource = model.Routes.ToList();
+            dataGridRoute.DataSource = m_dbContext.Routes.ToList();
         }
     }
 }
