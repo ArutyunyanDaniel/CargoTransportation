@@ -46,6 +46,11 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labDuration = new System.Windows.Forms.Label();
+            this.labDistance = new System.Windows.Forms.Label();
+            this.labDurationShow = new System.Windows.Forms.Label();
+            this.labDistanceShow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRoute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDimension)).BeginInit();
@@ -63,6 +68,7 @@
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridRoute
@@ -259,7 +265,7 @@
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(148, 25);
+            this.gMapControl.Location = new System.Drawing.Point(19, 12);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 18;
             this.gMapControl.MinZoom = 2;
@@ -273,16 +279,67 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(405, 229);
+            this.gMapControl.Size = new System.Drawing.Size(443, 291);
             this.gMapControl.TabIndex = 9;
             this.gMapControl.Zoom = 0D;
-            this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
+            this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load_1);
+            this.gMapControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl_MouseClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.labDistanceShow);
+            this.groupBox1.Controls.Add(this.labDurationShow);
+            this.groupBox1.Controls.Add(this.labDistance);
+            this.groupBox1.Controls.Add(this.labDuration);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Location = new System.Drawing.Point(468, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(168, 101);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Information about route";
+            // 
+            // labDuration
+            // 
+            this.labDuration.AutoSize = true;
+            this.labDuration.Location = new System.Drawing.Point(6, 29);
+            this.labDuration.Name = "labDuration";
+            this.labDuration.Size = new System.Drawing.Size(50, 13);
+            this.labDuration.TabIndex = 0;
+            this.labDuration.Text = "Duration:";
+            // 
+            // labDistance
+            // 
+            this.labDistance.AutoSize = true;
+            this.labDistance.Location = new System.Drawing.Point(6, 61);
+            this.labDistance.Name = "labDistance";
+            this.labDistance.Size = new System.Drawing.Size(52, 13);
+            this.labDistance.TabIndex = 1;
+            this.labDistance.Text = "Distance:";
+            // 
+            // labDurationShow
+            // 
+            this.labDurationShow.AutoSize = true;
+            this.labDurationShow.Location = new System.Drawing.Point(64, 29);
+            this.labDurationShow.Name = "labDurationShow";
+            this.labDurationShow.Size = new System.Drawing.Size(0, 13);
+            this.labDurationShow.TabIndex = 2;
+            // 
+            // labDistanceShow
+            // 
+            this.labDistanceShow.AutoSize = true;
+            this.labDistanceShow.Location = new System.Drawing.Point(64, 61);
+            this.labDistanceShow.Name = "labDistanceShow";
+            this.labDistanceShow.Size = new System.Drawing.Size(0, 13);
+            this.labDistanceShow.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 522);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gMapControl);
             this.Controls.Add(this.tabControlTableDB);
             this.Name = "Form1";
@@ -305,6 +362,8 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -329,6 +388,11 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labDistanceShow;
+        private System.Windows.Forms.Label labDurationShow;
+        private System.Windows.Forms.Label labDistance;
+        private System.Windows.Forms.Label labDuration;
     }
 }
 
