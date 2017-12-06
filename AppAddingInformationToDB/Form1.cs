@@ -35,7 +35,10 @@ namespace AppAddingInformationToDB
             _finish = new PointLatLng();
             _route = new List<PointLatLng>();
         }
-
+        public TextBox getTe()
+        {
+            return textBoxBrandName;
+        }
         private void DisplayTableInForm()
         {
             dataGridBrand.DataSource = _dbContext.Brands.ToList();
@@ -87,9 +90,10 @@ namespace AppAddingInformationToDB
                 _finish = pointCurent;
                 _map.DrawMarker(ref gMapControl, _finish);
                 _route = _map.GetRoute(_start, _finish);
+                textBoxInputRouteDistance.Text = _map.GetRouteDistance().ToString();
+                textBoxInputRouteDuration.Text = _map.GetRouteDuration().ToString();
                 _map.DrawRoute(ref gMapControl, ref _route);
-                labDistanceShow.Text = _map.GetRouteDistance();
-                labDurationShow.Text = _map.GetRouteDuration();
+                
 
             }
             else if (e.Button == MouseButtons.Left && _finish.Lat != 0.0 && _start.Lat != 0.0)
@@ -102,21 +106,21 @@ namespace AppAddingInformationToDB
 
         private void buttonAddRouteToDB_Click(object sender, EventArgs e)
         {
-            if (textBoxInputDriver.Text != String.Empty && textBoxInputPrice.Text != String.Empty
-                && labDistanceShow.Text != String.Empty && labDurationShow.Text != String.Empty)
+            if (textBoxInputRouteDriver.Text != String.Empty && textBoxInputRoutePrice.Text != String.Empty)
             {                         
                 using (MyModel model = new MyModel())
                 {
                     Route route = new Route
                     {
-                        Price = decimal.Parse(textBoxInputPrice.Text),
-                        Duration = labDurationShow.Text,
-                        Disnatce = labDistanceShow.Text,
+                        Price = decimal.Parse(textBoxInputRoutePrice.Text),
+                        Duration = _map.GetRouteDuration(),
+                        Disnatce = _map.GetRouteDistance(),
                         Way = GmapRoutToDbGeomerty(_route),
-                        ID_Driver = int.Parse(textBoxInputDriver.Text)
+                        ID_Driver = int.Parse(textBoxInputRouteDriver.Text)
                     };
                     model.Routes.Add(route);
                     model.SaveChanges();
+                    DisplayTableInForm();
                 }
 
             }
@@ -152,13 +156,6 @@ namespace AppAddingInformationToDB
             return DbGeometry.FromText(stringBuilder.ToString());
         }
         
-        private void ButUpdate_Click(object sender, EventArgs e)
-        {
-            DisplayTableInForm();
-            dataGridRoute.Update();
-            dataGridRoute.Refresh();
-        }
-
         private void ButExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -169,5 +166,15 @@ namespace AppAddingInformationToDB
         private PointLatLng _start;
         private PointLatLng _finish;
         List<PointLatLng> _route;
+
+        private void tabPage12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
